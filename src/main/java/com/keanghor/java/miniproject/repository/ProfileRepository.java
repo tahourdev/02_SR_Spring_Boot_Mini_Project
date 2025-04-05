@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
 import org.springframework.http.ResponseEntity;
 
+import java.util.Collection;
 import java.util.UUID;
 
 @Mapper
@@ -40,4 +41,11 @@ public interface ProfileRepository {
             DELETE FROM  app_users WHERE user_id = #{userId}
             """)
     void deleteProfile(UUID userId);
+
+    Collection<Object> findAll();
+
+    void delete(Profile profile);
+
+
+    Profile getProfileByUserId(UUID userId);
 }
