@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS app_users
     email VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
     level INTEGER,
-    xp BIGINT,
+    xp INTEGER,
     profile_image VARCHAR(255),
     is_verified BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS achievements
     title VARCHAR(255) NOT NULL,
     description TEXT,
     badge VARCHAR(255),
-    xp_required BIGINT
+    xp_required INTEGER
 );
 
 -- Table: app_user_achievements (Join Table)
@@ -45,8 +45,8 @@ CREATE TABLE IF NOT EXISTS habits
 );
 
 -- Table: habit_logs
-CREATE TABLE IF NOT EXISTS habit_logs
-(
+CREATE TABLE IF NOT EXISTS habit_logs(
+
     log_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     log_date DATE NOT NULL,
     status habit_status,
