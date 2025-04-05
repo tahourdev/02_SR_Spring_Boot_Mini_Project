@@ -32,3 +32,10 @@ VALUES (gen_random_uuid(), 'First Login', 'Awarded for logging in for the first 
        (gen_random_uuid(), 'The Collector', 'Awarded for unlocking 100 achievements', 'badge_15.png', 1400);
 
 
+-- Insert a Habit
+INSERT INTO habits (habit_id, title, description, frequency, app_user_id)
+VALUES ('6fa85f64-5717-4562-b3fc-2c963f66afa9', 'Morning Run', 'Run 5km every morning', 'DAILY', '3fa85f64-5717-4562-b3fc-2c963f66afa6');
+
+-- Insert a HabitLog
+INSERT INTO habit_logs (log_id, log_date, status, xp_earned, habit_id)
+VALUES ('7fa85f64-5717-4562-b3fc-2c963f66afa0', '2025-04-04', 'COMPLETED', 50, '6fa85f64-5717-4562-b3fc-2c963f66afa9');

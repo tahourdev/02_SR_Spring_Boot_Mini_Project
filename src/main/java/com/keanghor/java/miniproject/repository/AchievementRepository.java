@@ -1,6 +1,6 @@
 package com.keanghor.java.miniproject.repository;
 
-import com.keanghor.java.miniproject.config.UUIDTypeHandler;
+import com.keanghor.java.miniproject.config.UuidTypeHandler;
 import com.keanghor.java.miniproject.model.entity.Achievement;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
@@ -12,7 +12,7 @@ import java.util.UUID;
 public interface AchievementRepository {
 
     @Results(id = "achievementMapper", value = {
-            @Result(property = "achievementId", column = "achievement_id", jdbcType = JdbcType.VARCHAR, javaType = UUID.class, typeHandler = UUIDTypeHandler.class),
+            @Result(property = "achievementId", column = "achievement_id", jdbcType = JdbcType.VARCHAR, javaType = UUID.class, typeHandler = UuidTypeHandler.class),
             @Result(property = "xpRequired", column = "xp_required")
     })
     @Select("""
