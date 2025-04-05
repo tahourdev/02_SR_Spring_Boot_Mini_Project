@@ -18,9 +18,9 @@ public interface AchievementRepository {
     @Select("""
             SELECT * FROM achievements
             ORDER BY xp_required
-            OFFSET #{offset} LIMIT #{size}
+            OFFSET #{offset} LIMIT #{limit}
             """)
-    List<Achievement> getAllAchievement(Integer offset, Integer size);
+    List<Achievement> getAllAchievements(Integer offset, Integer limit);
 
     @ResultMap("achievementMapper")
     @Select("""
@@ -28,6 +28,7 @@ public interface AchievementRepository {
             INNER JOIN achievements a
             ON ua.achievement_id = a.achievement_id
             WHERE app_user_id = #{userId}
+            OFFSET #{offset} LIMIT #{limit}
             """)
-    List<Achievement> getAchievementByUserId(Integer offset, Integer size, Long userId);
+    List<Achievement> getAchievementByUserId(Integer offset, Integer limit, UUID userId);
 }

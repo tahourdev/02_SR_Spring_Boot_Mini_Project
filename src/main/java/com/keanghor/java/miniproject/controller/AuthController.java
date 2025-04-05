@@ -2,11 +2,10 @@ package com.keanghor.java.miniproject.controller;
 
 
 import com.keanghor.java.miniproject.jwt.JwtService;
-import com.keanghor.java.miniproject.model.entity.request.AuthRequest;
-import com.keanghor.java.miniproject.model.entity.response.AuthResponse;
+import com.keanghor.java.miniproject.model.request.AuthRequest;
+import com.keanghor.java.miniproject.model.response.AuthResponse;
 import com.keanghor.java.miniproject.service.AppUserService;
 import lombok.RequiredArgsConstructor;
-import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -38,8 +37,8 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticate(@RequestBody AuthRequest request) throws Exception {
-        authenticate(request.getEmail(), request.getPassword());
-        final UserDetails userDetails = appUserService.loadUserByUsername(request.getEmail());
+        authenticate(request.getIdentifier(), request.getPassword());
+        final UserDetails userDetails = appUserService.loadUserByUsername(request.getIdentifier());
         final String token = jwtService.generateToken(userDetails);
         AuthResponse authResponse = new AuthResponse(token);
         return ResponseEntity.ok(authResponse);

@@ -2,17 +2,21 @@ package com.keanghor.java.miniproject.repository;
 
 
 
+import com.keanghor.java.miniproject.config.UUIDTypeHandler;
 import com.keanghor.java.miniproject.model.entity.AppUser;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.type.JdbcType;
+
+import java.util.UUID;
 
 @Mapper
 public interface AppUserRepository {
 
     @Results(id = "appUserMapper", value = {
-            @Result(property = "appUserId", column = "user_id"),
+            @Result(property = "appUserId", column = "user_id", jdbcType = JdbcType.VARCHAR, javaType = UUID.class, typeHandler = UUIDTypeHandler.class),
             @Result(property = "userName", column = "username"),
             @Result(property = "profileImage", column = "profile_image"),
             @Result(property = "isVerified", column = "is_verified"),

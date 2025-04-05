@@ -1,4 +1,4 @@
-package com.keanghor.java.miniproject.model.entity.response;
+package com.keanghor.java.miniproject.model.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

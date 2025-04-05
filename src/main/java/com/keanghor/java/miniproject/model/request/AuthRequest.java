@@ -1,4 +1,4 @@
-package com.keanghor.java.miniproject.model.entity.request;
+package com.keanghor.java.miniproject.model.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AuthRequest {
-    private String email;
+    private String identifier;
     private String password;
 }
