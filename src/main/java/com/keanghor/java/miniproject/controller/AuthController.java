@@ -2,7 +2,8 @@ package com.keanghor.java.miniproject.controller;
 
 
 import com.keanghor.java.miniproject.jwt.JwtService;
-import com.keanghor.java.miniproject.model.request.AuthRequest;
+import com.keanghor.java.miniproject.model.request.AuthLoginRequest;
+import com.keanghor.java.miniproject.model.request.AuthRegisterRequest;
 import com.keanghor.java.miniproject.model.response.AuthResponse;
 import com.keanghor.java.miniproject.service.AppUserService;
 import lombok.RequiredArgsConstructor;
@@ -36,12 +37,22 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> authenticate(@RequestBody AuthRequest request) throws Exception {
+    public ResponseEntity<?> authenticate(@RequestBody AuthLoginRequest request) throws Exception {
         authenticate(request.getIdentifier(), request.getPassword());
         final UserDetails userDetails = appUserService.loadUserByUsername(request.getIdentifier());
         final String token = jwtService.generateToken(userDetails);
         AuthResponse authResponse = new AuthResponse(token);
         return ResponseEntity.ok(authResponse);
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<String> register(@RequestBody AuthRegisterRequest request) {
+        try {
+            appUserService.registerUser(request);  // Delegate the registration to the service
+            return ResponseEntity.ok("User registered successfully.");
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body("Error: " + e.getMessage());
+        }
     }
 
 }
