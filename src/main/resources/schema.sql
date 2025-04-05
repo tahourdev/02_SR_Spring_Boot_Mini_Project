@@ -10,6 +10,7 @@ CREATE TABLE app_users
     is_verified   BOOLEAN   DEFAULT FALSE,
     created_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+SELECT * FROM app_users WHERE email = 'oengsikeat@gmail.com';
 
 CREATE TABLE achievements
 (
