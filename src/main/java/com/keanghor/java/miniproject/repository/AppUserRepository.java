@@ -17,10 +17,15 @@ public interface AppUserRepository {
             @Result(property = "profileImage", column = "profile_image"),
             @Result(property = "isVerified", column = "is_verified"),
             @Result(property = "createdAt", column = "created_at"),
-            @Result(property = "xp", column = "ex") // don't forget this one
+            @Result(property = "xp", column = "ex")
     })
     @Select("""
     SELECT * FROM app_users WHERE email = #{email}
 """)
     AppUser getUserByEmail(String email);
+
+    @Select("""
+        SELECT * from app_users where username = #{username}
+    """)
+    AppUser getUserByUsername(String username);
 }
