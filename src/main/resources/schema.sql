@@ -22,10 +22,13 @@ CREATE TABLE achievements
 
 CREATE TABLE app_user_achievements
 (
-    app_user_achievement_id SERIAL PRIMARY KEY,
-    app_user_id             INTEGER REFERENCES app_users (user_id),
-    achievement_id          INTEGER REFERENCES achievements (achievement_id)
+    app_user_id    INT          NOT NULL,
+    achievement_id VARCHAR(100) NOT NULL,
+    PRIMARY KEY (app_user_id, achievement_id),
+    FOREIGN KEY (app_user_id) REFERENCES app_users (user_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (achievement_id) REFERENCES achievements (achievement_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
 
 CREATE TABLE habits
 (
@@ -44,3 +47,5 @@ CREATE TABLE habit_logs
     xp_earned BIGINT,
     habit_id  INTEGER REFERENCES habits (habit_id)
 );
+
+CREATE EXTENSION IF NOT EXISTS "pgcrypto";
