@@ -3,7 +3,6 @@ package com.keanghor.java.miniproject.model.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -11,13 +10,15 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AppUser {
+public class Profile {
     private UUID appUserId;
-    private String appUserName;
-    private String userEmail;
-    private Integer userLevel;
-    private Long userXp;
-    private String userProfileImageUrl;
-    private Boolean userIsVerified;
+    private String userName;
+    private String email;
+    private String password;
+    private String level;
+    private int xp;
+    private String profileImage;
+    private boolean isVerified;
     private LocalDateTime createdAt;
+
 }

@@ -1,3 +1,4 @@
+CREATE DATABASE spring_mini_project;
 -- Create the enum type for habit status
 CREATE TYPE habit_status AS ENUM ('COMPLETED', 'FINISHED');
 CREATE TYPE habit_frequency AS ENUM ('WEEKLY', 'MONTHLY', 'DAILY');
