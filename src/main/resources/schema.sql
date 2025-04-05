@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS habits
 
 -- Table: habit_logs
 CREATE TABLE IF NOT EXISTS habit_logs
-(
+
     log_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     log_date DATE NOT NULL,
     status habit_status,
