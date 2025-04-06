@@ -38,7 +38,7 @@ public class FileController {
 
     @GetMapping("/preview-file/{file-name}")
     public ResponseEntity<?> getFileByFileName(@PathVariable("file-name") String fileName) throws IOException {
-        InputStream inputStream = fileService.getFileByFileName(fileName);
+        InputStream inputStream = fileService.getFileByFileName(fileName).getInputStream();
         return ResponseEntity.status(HttpStatus.OK)
                 .contentType(MediaType.IMAGE_PNG)
                 .body(inputStream.readAllBytes());
