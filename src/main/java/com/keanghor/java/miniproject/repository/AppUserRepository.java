@@ -3,17 +3,15 @@ package com.keanghor.java.miniproject.repository;
 
 
 import com.keanghor.java.miniproject.model.entity.AppUser;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import com.keanghor.java.miniproject.model.entity.request.AppUserRequest;
+import org.apache.ibatis.annotations.*;
 
 @Mapper
 public interface AppUserRepository {
 
     @Results(id = "appUserMapper", value = {
             @Result(property = "appUserId", column = "user_id"),
-            @Result(property = "userName", column = "username"),
+            @Result(property = "appUsername", column = "username"),
             @Result(property = "profileImage", column = "profile_image"),
             @Result(property = "isVerified", column = "is_verified"),
             @Result(property = "createdAt", column = "created_at"),
@@ -28,4 +26,19 @@ public interface AppUserRepository {
         SELECT * from app_users where username = #{username}
     """)
     AppUser getUserByUsername(String username);
+
+    @Select("""
+                INSERT INTO app_users
+                VALUES (default, #{request.username}, #{request.email}, #{request.password}, '1','0', #{request.profileImage},false,default)
+                RETURNING *
+            """)
+    @ResultMap("appUserMapper")
+    AppUser register(@Param("request") AppUserRequest request);
+
+    @Select("""
+                SELECT * FROM app_users
+                WHERE user_id = #{userId}
+            """)
+    @ResultMap("appUserMapper")
+    AppUser getUserById(Long userId);
 }

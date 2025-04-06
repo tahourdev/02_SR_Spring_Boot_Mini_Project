@@ -2,6 +2,7 @@ package com.keanghor.java.miniproject.controller;
 
 
 import com.keanghor.java.miniproject.jwt.JwtService;
+import com.keanghor.java.miniproject.model.entity.request.AppUserRequest;
 import com.keanghor.java.miniproject.model.entity.request.AuthRequest;
 import com.keanghor.java.miniproject.model.entity.response.AuthResponse;
 import com.keanghor.java.miniproject.service.AppUserService;
@@ -43,6 +44,10 @@ public class AuthController {
         final String token = jwtService.generateToken(userDetails);
         AuthResponse authResponse = new AuthResponse(token);
         return ResponseEntity.ok(authResponse);
+    }
+    @PostMapping("/register")
+    public ResponseEntity<?> register(@RequestBody AppUserRequest request){
+        return ResponseEntity.ok(appUserService.register(request));
     }
 
 }

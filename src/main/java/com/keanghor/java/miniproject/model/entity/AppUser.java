@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 public class AppUser  implements UserDetails {
     private Long appUserId;
-    private String userName;
+    private String appUsername;
     private String email;
     private String password;
     private Integer level;

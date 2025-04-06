@@ -41,6 +41,7 @@ public class JwtService {
 
     //3. retrieving any information from token we will need the secret key
     private Claims extractAllClaim(String token) {
+        System.out.println(token);
         return Jwts.parser()
                 .verifyWith(getSignKey())
                 .build()
