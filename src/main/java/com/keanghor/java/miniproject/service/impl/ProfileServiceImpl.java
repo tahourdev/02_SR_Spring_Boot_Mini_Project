@@ -1,13 +1,11 @@
-package com.keanghor.java.miniproject.services.serviceImp;
+package com.keanghor.java.miniproject.service.impl;
 
-import com.keanghor.java.miniproject.ApiResponse.ApiResponse;
 import com.keanghor.java.miniproject.exception.NotFoundException;
 import com.keanghor.java.miniproject.model.entity.Profile;
-import com.keanghor.java.miniproject.model.entity.request.ProfileRequest;
+import com.keanghor.java.miniproject.model.request.ProfileRequest;
 import com.keanghor.java.miniproject.repository.ProfileRepository;
-import com.keanghor.java.miniproject.services.ProfileService;
+import com.keanghor.java.miniproject.service.ProfileService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -18,9 +16,9 @@ public class ProfileServiceImpl implements ProfileService {
     private final ProfileRepository profileRepository;
 
     @Override
-    public Profile getProfile() {
+    public Profile getProfile(UUID currentUserId) {
 
-        Profile profile = profileRepository.getUserProfile();
+        Profile profile = profileRepository.getUserProfile(currentUserId);
         if (profile == null) {
             throw new NotFoundException("Profile not found. Please Login or Register first!");
         }

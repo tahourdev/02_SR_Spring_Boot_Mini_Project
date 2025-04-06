@@ -1,7 +1,7 @@
-package com.keanghor.java.miniproject.services.serviceImp;
+package com.keanghor.java.miniproject.service.impl;
 
 import com.keanghor.java.miniproject.model.entity.FileMetadata;
-import com.keanghor.java.miniproject.services.FileService;
+import com.keanghor.java.miniproject.service.FileService;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Value;

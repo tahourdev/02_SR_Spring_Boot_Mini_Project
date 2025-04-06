@@ -28,15 +28,15 @@ public interface AppUserRepository {
             """)
     AppUser getUserByUsername(String username);
 
-    @Insert("""
-                INSERT INTO app_users (user_id, username, password, email, profile_image, is_verified, created_at)
-                VALUES (#{appUserId}, #{userName}, #{password}, #{email}, #{profileImage}, #{isVerified}, #{createdAt})
-            """)
-//    @Options(useGeneratedKeys = true, keyProperty = "appUserId")
-    void save(AppUser user);
-
-
-    boolean existsByEmail(String email);
-
+//    @Insert("""
+//                INSERT INTO app_users (user_id, username, password, email, profile_image, is_verified, created_at)
+//                VALUES (#{appUserId}, #{userName}, #{password}, #{email}, #{profileImage}, #{isVerified}, #{createdAt})
+//            """)
+////    @Options(useGeneratedKeys = true, keyProperty = "appUserId")
+//    void save(AppUser user);
+//
+//
+//    boolean existsByEmail(String email);
+//
 
 }

@@ -1,13 +1,11 @@
 package com.keanghor.java.miniproject.repository;
 
 
-import com.keanghor.java.miniproject.ApiResponse.ApiResponse;
 import com.keanghor.java.miniproject.config.UuidTypeHandler;
 import com.keanghor.java.miniproject.model.entity.Profile;
-import com.keanghor.java.miniproject.model.entity.request.ProfileRequest;
+import com.keanghor.java.miniproject.model.request.ProfileRequest;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
-import org.springframework.http.ResponseEntity;
 
 import java.util.Collection;
 import java.util.UUID;
@@ -24,9 +22,9 @@ public interface ProfileRepository {
     }
     )
     @Select("""
-               SELECT * FROM  app_users;
+               SELECT * FROM  app_users WHERE user_id = #{currentUserId}
             """)
-    Profile getUserProfile();
+    Profile getUserProfile(UUID currentUserId);
 
     @ResultMap("profileMapper")
     @Select("""

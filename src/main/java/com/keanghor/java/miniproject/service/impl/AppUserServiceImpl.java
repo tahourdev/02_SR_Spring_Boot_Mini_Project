@@ -25,24 +25,24 @@ public class AppUserServiceImpl implements AppUserService {
         return appUserRepository.getUserByUsername(identity);
     }
 
-    @Override
-    public void registerUser(AuthRegisterRequest request) {
-        // Check if the email is already registered
-        if (appUserRepository.existsByEmail(request.getEmail())) {
-            throw new RuntimeException("Email is already taken.");
-        }
-
-        // Hash the password using BCrypt
-        String encodedPassword = passwordEncoder.encode(request.getPassword());
-
-        // Create a new AppUser entity and set the values from the request
-        AppUser user = new AppUser();
-        user.setUserName(request.getUsername());
-        user.setEmail(request.getEmail());
-        user.setPassword(encodedPassword);
-
-        // Save the new user to the repository
-        appUserRepository.save(user);
-    }
+//    @Override
+//    public void registerUser(AuthRegisterRequest request) {
+//        // Check if the email is already registered
+//        if (appUserRepository.existsByEmail(request.getEmail())) {
+//            throw new RuntimeException("Email is already taken.");
+//        }
+//
+//        // Hash the password using BCrypt
+//        String encodedPassword = passwordEncoder.encode(request.getPassword());
+//
+//        // Create a new AppUser entity and set the values from the request
+//        AppUser user = new AppUser();
+//        user.setUserName(request.getUsername());
+//        user.setEmail(request.getEmail());
+//        user.setPassword(encodedPassword);
+//
+//        // Save the new user to the repository
+//        appUserRepository.save(user);
+//    }
 
 }

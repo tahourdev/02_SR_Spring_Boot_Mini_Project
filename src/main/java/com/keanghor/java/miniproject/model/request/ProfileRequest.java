@@ -1,7 +1,6 @@
-package com.keanghor.java.miniproject.model.entity.request;
+package com.keanghor.java.miniproject.model.request;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package com.keanghor.java.miniproject.services;
+package com.keanghor.java.miniproject.service;
 
 import com.keanghor.java.miniproject.model.entity.FileMetadata;
 import org.springframework.core.io.Resource;
