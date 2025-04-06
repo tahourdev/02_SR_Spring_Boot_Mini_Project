@@ -1,11 +1,7 @@
--- Create the enum type for habit status
-CREATE TYPE habit_status AS ENUM ('COMPLETED', 'FINISHED');
-CREATE TYPE habit_frequency AS ENUM ('WEEKLY', 'MONTHLY', 'DAILY');
-
 -- Table: app_users
 CREATE TABLE IF NOT EXISTS app_users
 (
-    user_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    user_id UUID PRIMARY KEY,
     username VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
@@ -19,7 +15,7 @@ CREATE TABLE IF NOT EXISTS app_users
 -- Table: achievements
 CREATE TABLE IF NOT EXISTS achievements
 (
-    achievement_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    achievement_id UUID PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     description TEXT,
     badge VARCHAR(255),
@@ -29,7 +25,7 @@ CREATE TABLE IF NOT EXISTS achievements
 -- Table: app_user_achievements (Join Table)
 CREATE TABLE IF NOT EXISTS app_user_achievements
 (
-    app_user_achievement_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    app_user_achievement_id UUID PRIMARY KEY,
     app_user_id UUID REFERENCES app_users(user_id) ON DELETE CASCADE ON UPDATE CASCADE,
     achievement_id UUID REFERENCES achievements(achievement_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
@@ -37,21 +33,37 @@ CREATE TABLE IF NOT EXISTS app_user_achievements
 -- Table: habits
 CREATE TABLE IF NOT EXISTS habits
 (
-    habit_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    habit_id UUID PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     description TEXT,
-    frequency habit_frequency,
-    app_user_id UUID REFERENCES app_users(user_id) ON DELETE CASCADE ON UPDATE CASCADE
+    frequency VARCHAR(100),
+    isActive BOOLEAN DEFAULT TRUE,
+    app_user_id UUID REFERENCES app_users(user_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- ALTER TABLE habits
+--     ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
+--
+-- ALTER TABLE habits
+--     ADD COLUMN isActive BOOLEAN DEFAULT TRUE;
+
 
 -- Table: habit_logs
 CREATE TABLE IF NOT EXISTS habit_logs(
-
-    log_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    log_id UUID PRIMARY KEY,
     log_date DATE NOT NULL,
-    status habit_status,
-    xp_earned BIGINT,
+    status VARCHAR(100),
+    xp_earned INTEGER,
     habit_id UUID REFERENCES habits(habit_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+
+DROP TABLE IF EXISTS habit_logs;
+DROP TABLE IF EXISTS habits;
+DROP TABLE IF EXISTS app_user_achievements;
+DROP TABLE IF EXISTS achievements;
+DROP TABLE IF EXISTS app_users;
+
 
 
