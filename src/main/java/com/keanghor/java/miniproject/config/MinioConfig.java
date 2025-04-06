@@ -1,4 +1,4 @@
-package com.team3.sr.java.miniproject.config;
+package com.keanghor.java.miniproject.config;
 
 import io.minio.MinioClient;
 import org.springframework.beans.factory.annotation.Value;

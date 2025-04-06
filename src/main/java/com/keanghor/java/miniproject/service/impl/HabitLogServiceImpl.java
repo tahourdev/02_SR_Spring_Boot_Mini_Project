@@ -1,9 +1,12 @@
-package com.team3.sr.java.miniproject.services.serviceImp;
+package com.keanghor.java.miniproject.service.impl;
 
-import com.team3.sr.java.miniproject.model.entity.HabitLog;
-import com.team3.sr.java.miniproject.repository.HabitLogRepository;
-import com.team3.sr.java.miniproject.repository.HabitRepository;
-import com.team3.sr.java.miniproject.services.HabitLogService;
+
+import com.keanghor.java.miniproject.model.entity.HabitLog;
+import com.keanghor.java.miniproject.repository.HabitRepository;
+
+import com.keanghor.java.miniproject.repository.HabitLogRepository;
+
+import com.keanghor.java.miniproject.service.HabitLogService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

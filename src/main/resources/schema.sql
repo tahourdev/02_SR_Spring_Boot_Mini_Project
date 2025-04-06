@@ -38,24 +38,14 @@ CREATE TABLE app_user_achievements
     FOREIGN KEY (achievement_id) REFERENCES achievements (achievement_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-
-
-CREATE TABLE habits
-(
-    habit_id    SERIAL PRIMARY KEY,
-    title       VARCHAR(255) NOT NULL,
-    description TEXT,
-    frequency   VARCHAR(255),
-    app_user_id INTEGER REFERENCES app_users (user_id)
-);
-
 CREATE TABLE habit_logs
 (
-    log_id    SERIAL PRIMARY KEY,
+    log_id    UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     log_date  DATE NOT NULL,
     status    VARCHAR(50),
     xp_earned BIGINT,
-    habit_id  INTEGER REFERENCES habits (habit_id)
+    habit_id  UUID NOT NULL,
+    FOREIGN KEY (habit_id) REFERENCES habits(habit_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE EXTENSION IF NOT EXISTS "pgcrypto";

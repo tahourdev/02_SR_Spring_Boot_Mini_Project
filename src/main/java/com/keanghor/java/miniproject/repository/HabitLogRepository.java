@@ -1,6 +1,7 @@
-package com.team3.sr.java.miniproject.repository;
+package com.keanghor.java.miniproject.repository;
 
-import com.team3.sr.java.miniproject.model.entity.HabitLog;
+
+import com.keanghor.java.miniproject.model.entity.HabitLog;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;

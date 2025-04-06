@@ -1,6 +1,7 @@
-package com.team3.sr.java.miniproject.services;
+package com.keanghor.java.miniproject.service;
 
-import com.team3.sr.java.miniproject.model.entity.HabitLog;
+import com.keanghor.java.miniproject.model.entity.HabitLog;
+
 
 import java.util.List;
 import java.util.UUID;
