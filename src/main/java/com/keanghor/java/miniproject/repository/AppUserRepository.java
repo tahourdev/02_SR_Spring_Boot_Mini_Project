@@ -1,7 +1,5 @@
 package com.keanghor.java.miniproject.repository;
 
-
-
 import com.keanghor.java.miniproject.model.entity.AppUser;
 
 import com.keanghor.java.miniproject.model.request.AppUserRequest;
@@ -46,4 +44,6 @@ public interface AppUserRepository {
             """)
     @ResultMap("appUserMapper")
     AppUser getUserById(UUID userId);
+
+
 }

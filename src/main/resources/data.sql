@@ -26,3 +26,11 @@ VALUES (gen_random_uuid(), 'First Login', 'Awarded for logging in for the first 
        (gen_random_uuid(), 'Top Contributor', 'Awarded for contributing the most in a challenge', 'badge_9.png', 900),
        (gen_random_uuid(), 'Speed Runner', 'Awarded for completing a task in record time', 'badge_10.png', 1000);
 
+-- Insert 5 rows into the habits table
+INSERT INTO habits (title, description, frequency, is_active, user_id) VALUES
+       ('Morning Run', 'Run for 30 minutes every morning', 'Daily', TRUE, '079d5eee-cdda-4d90-b43d-4ac4824493f2'),
+       ('Meditation', 'Practice mindfulness for 15 minutes', 'Weekly', TRUE, '079d5eee-cdda-4d90-b43d-4ac4824493f2'),
+       ('Reading', 'Read 20 pages of a book daily', 'Daily', FALSE, '276d16c9-caa1-45ee-80f2-74fb9530d6d6'),
+       ('Drink Water', 'Drink at least 2 liters of water daily', 'Daily', TRUE, '276d16c9-caa1-45ee-80f2-74fb9530d6d6'),
+       ('Yoga', 'Practice yoga for 1 hour in the evening', 'Weekly', TRUE, '276d16c9-caa1-45ee-80f2-74fb9530d6d6');
+

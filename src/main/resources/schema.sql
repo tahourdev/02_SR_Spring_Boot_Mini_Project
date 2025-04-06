@@ -59,3 +59,15 @@ CREATE TABLE habit_logs
 );
 
 CREATE EXTENSION IF NOT EXISTS "pgcrypto";
+
+CREATE TABLE habits
+(
+    habit_id    uuid      default gen_random_uuid() PRIMARY KEY,
+    title       VARCHAR(255) NOT NULL,
+    description TEXT,
+    frequency   VARCHAR(50),
+    is_active   BOOLEAN   DEFAULT TRUE,
+    user_id uuid         NOT NULL,
+    created_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES app_users (user_id)
+);

@@ -1,7 +1,7 @@
 package com.keanghor.java.miniproject.service.impl;
 
-import com.keanghor.java.miniproject.model.Entity.Habit;
-import com.keanghor.java.miniproject.model.dto.Request.HabitRequest;
+import com.keanghor.java.miniproject.model.request.HabitRequest;
+import com.keanghor.java.miniproject.model.entity.Habit;
 import com.keanghor.java.miniproject.repository.HabitRepository;
 import com.keanghor.java.miniproject.service.HabitService;
 import org.springframework.stereotype.Service;
@@ -19,9 +19,9 @@ public class HabitServiceImpl implements HabitService {
     }
 
     @Override
-    public List<Habit> getAllHabits(Integer page, Integer size) {
+    public List<Habit> getHabitByUserId(Integer page, Integer size, UUID userId) {
         int offset = (page - 1) * size;
-        return habitRepository.getAllHabits(offset, size);
+        return habitRepository.getHabitByUserId(offset, size, userId);
     }
 
     @Override
@@ -36,13 +36,12 @@ public class HabitServiceImpl implements HabitService {
 
     @Override
     public Habit updateHabitById(UUID habitId, HabitRequest request) {
-        return habitRepository.updateHabitById(habitId,request);
+        return habitRepository.updateHabitById(habitId, request);
     }
 
     @Override
     public Habit getHabitById(UUID habitId) {
-        return habitRepository.getHabittById(habitId);
+        return habitRepository.getHabitById(habitId);
     }
-
 
 }

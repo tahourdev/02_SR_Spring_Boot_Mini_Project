@@ -1,4 +1,4 @@
-package com.keanghor.java.miniproject.model.entity;
+package com.keanghor.java.miniproject.model.enumaration;
 
 public enum HabitStatus {
     COMPLETED,

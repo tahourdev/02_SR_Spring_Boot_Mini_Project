@@ -35,7 +35,6 @@ public class AuthController {
 
     private void authenticate(String email, String password) throws Exception {
         try {
-            log.info(email,password+"sdsdsdsd");
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
         } catch (DisabledException e) {
             throw new Exception("USER_DISABLED", e);

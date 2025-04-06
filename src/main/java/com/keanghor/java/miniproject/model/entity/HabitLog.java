@@ -1,5 +1,6 @@
 package com.keanghor.java.miniproject.model.entity;
 
+import com.keanghor.java.miniproject.model.enumaration.HabitStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
