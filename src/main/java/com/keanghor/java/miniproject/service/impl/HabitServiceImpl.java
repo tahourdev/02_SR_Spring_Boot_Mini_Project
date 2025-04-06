@@ -36,12 +36,12 @@ public class HabitServiceImpl implements HabitService {
 
     @Override
     public Habit updateHabitById(UUID habitId, HabitRequest request) {
-        return habitRepository.updateHabitById(habitId,request);
+        return habitRepository.updateHabitById(habitId, request);
     }
 
     @Override
     public Habit getHabitById(UUID habitId) {
-        return habitRepository.getHabittById(habitId);
+        return habitRepository.getHabitById(habitId);
     }
 
 

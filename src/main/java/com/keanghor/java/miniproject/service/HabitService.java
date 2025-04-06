@@ -2,7 +2,6 @@ package com.keanghor.java.miniproject.service;
 
 import com.keanghor.java.miniproject.model.Entity.Habit;
 import com.keanghor.java.miniproject.model.dto.Request.HabitRequest;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;

@@ -1,7 +1,5 @@
 package com.keanghor.java.miniproject.model.Entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.keanghor.java.miniproject.model.dto.Response.AppUserResponse;
 import com.keanghor.java.miniproject.model.enumaration.Frequency;
 import lombok.AllArgsConstructor;
