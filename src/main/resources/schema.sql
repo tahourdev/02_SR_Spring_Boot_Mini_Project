@@ -34,10 +34,10 @@ CREATE TABLE IF NOT EXISTS app_user_achievements
 CREATE TABLE IF NOT EXISTS habits
 (
     habit_id UUID PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
+    habit_title VARCHAR(255) NOT NULL,
     description TEXT,
-    frequency VARCHAR(100),
-    isActive BOOLEAN DEFAULT TRUE,
+    habit_frequency VARCHAR(100),
+    is_active BOOLEAN DEFAULT TRUE,
     app_user_id UUID REFERENCES app_users(user_id) ON DELETE CASCADE ON UPDATE CASCADE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

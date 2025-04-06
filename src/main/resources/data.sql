@@ -11,7 +11,7 @@ INSERT INTO app_user_achievements (app_user_achievement_id, app_user_id, achieve
 VALUES ('5fa85f64-5717-4562-b3fc-2c963f66afa8', '3fa85f64-5717-4562-b3fc-2c963f66afa6', '4fa85f64-5717-4562-b3fc-2c963f66afa7');
 
 -- Insert a Habit
-INSERT INTO habits (habit_id, title, description, frequency, app_user_id)
+INSERT INTO habits (habit_id, habit_title, description, habit_frequency, app_user_id)
 VALUES ('6fa85f64-5717-4562-b3fc-2c963f66afa9', 'Morning Run', 'Run 5km every morning', 'DAILY', '3fa85f64-5717-4562-b3fc-2c963f66afa6');
 
 -- Insert a HabitLog
