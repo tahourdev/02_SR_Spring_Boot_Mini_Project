@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AppUserRequest {
-    private String username;
+    private String appUserName;
     private String email;
     private String password;
     private String profileImage;

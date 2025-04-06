@@ -45,3 +45,5 @@ CREATE TABLE habit_logs
     xp_earned BIGINT,
     habit_id  INTEGER REFERENCES habits (habit_id)
 );
+
+SELECT * FROM app_users WHERE email = 'markara@gmail.com'

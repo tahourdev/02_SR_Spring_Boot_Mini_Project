@@ -7,8 +7,5 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AppUserResponse {
-    private Integer id;
-    private String appUserName;
-    private String email;
+public class ProfileResponse {
 }
