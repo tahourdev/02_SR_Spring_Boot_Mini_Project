@@ -15,7 +15,7 @@ import java.util.UUID;
 public interface ProfileRepository {
     @Results(
             id = "profileMapper", value = {
-            @Result(property = "appUserId", column = "user_id", jdbcType = JdbcType.OTHER, javaType = UUID.class, typeHandler = UUIDTypeHandler.class),
+            @Result(property = "appUserId", column = "user_id"),
             @Result(property = "userName", column = "username"),
             @Result(property = "profileImage", column = "profile_image"),
             @Result(property = "isVerified", column = "is_verified"),

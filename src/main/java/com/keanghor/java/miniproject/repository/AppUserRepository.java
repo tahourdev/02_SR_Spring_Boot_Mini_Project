@@ -7,6 +7,8 @@ import com.keanghor.java.miniproject.model.entity.AppUser;
 import com.keanghor.java.miniproject.model.request.AppUserRequest;
 import org.apache.ibatis.annotations.*;
 
+import java.util.UUID;
+
 @Mapper
 public interface AppUserRepository {
 
@@ -43,5 +45,5 @@ public interface AppUserRepository {
                 WHERE user_id = #{userId}
             """)
     @ResultMap("appUserMapper")
-    AppUser getUserById(Long userId);
+    AppUser getUserById(UUID userId);
 }

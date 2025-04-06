@@ -21,21 +21,8 @@ VALUES (gen_random_uuid(), 'First Login', 'Awarded for logging in for the first 
        (gen_random_uuid(), '100 XP', 'Awarded for earning 100 XP', 'badge_4.png', 400),
        (gen_random_uuid(), 'Daily Login', 'Awarded for logging in every day for a week', 'badge_5.png', 500),
        (gen_random_uuid(), 'Perfect Score', 'Awarded for achieving a perfect score in a challenge', 'badge_6.png', 600),
-       (gen_random_uuid(), 'First Achievement', 'Awarded for unlocking your first achievement', 'badge_7.png', 150),
-       (gen_random_uuid(), 'Level 10', 'Awarded for reaching level 10', 'badge_8.png', 700),
-       (gen_random_uuid(), 'Top Contributor', 'Awarded for contributing the most in a challenge', 'badge_9.png', 800),
-       (gen_random_uuid(), 'Speed Runner', 'Awarded for completing a task in record time', 'badge_10.png', 900),
-       (gen_random_uuid(), 'Master of Tasks', 'Awarded for completing 50 tasks', 'badge_11.png', 1000),
-       (gen_random_uuid(), 'Level 20', 'Awarded for reaching level 20', 'badge_12.png', 1100),
-       (gen_random_uuid(), 'Challenge Winner', 'Awarded for winning a major challenge', 'badge_13.png', 1200),
-       (gen_random_uuid(), 'Level 30', 'Awarded for reaching level 30', 'badge_14.png', 1300),
-       (gen_random_uuid(), 'The Collector', 'Awarded for unlocking 100 achievements', 'badge_15.png', 1400);
+       (gen_random_uuid(), 'First Achievement', 'Awarded for unlocking your first achievement', 'badge_7.png', 700),
+       (gen_random_uuid(), 'Level 10', 'Awarded for reaching level 10', 'badge_8.png', 800),
+       (gen_random_uuid(), 'Top Contributor', 'Awarded for contributing the most in a challenge', 'badge_9.png', 900),
+       (gen_random_uuid(), 'Speed Runner', 'Awarded for completing a task in record time', 'badge_10.png', 1000);
 
-
--- -- Insert a Habit
--- INSERT INTO habits (habit_id, title, description, frequency, app_user_id)
--- VALUES ('6fa85f64-5717-4562-b3fc-2c963f66afa9', 'Morning Run', 'Run 5km every morning', 'DAILY', '3fa85f64-5717-4562-b3fc-2c963f66afa6');
---
--- -- Insert a HabitLog
--- INSERT INTO habit_logs (log_id, log_date, status, xp_earned, habit_id)
--- VALUES ('7fa85f64-5717-4562-b3fc-2c963f66afa0', '2025-04-04', 'COMPLETED', 50, '6fa85f64-5717-4562-b3fc-2c963f66afa9');

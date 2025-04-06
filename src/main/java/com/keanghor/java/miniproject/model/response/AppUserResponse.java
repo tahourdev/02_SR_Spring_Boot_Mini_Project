@@ -4,11 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
+import java.util.UUID;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class AppUserResponse {
-    private Integer id;
+    private UUID appUserId;
     private String appUserName;
     private String email;
 }

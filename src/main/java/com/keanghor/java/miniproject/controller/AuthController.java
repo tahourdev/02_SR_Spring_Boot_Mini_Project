@@ -1,9 +1,6 @@
 package com.keanghor.java.miniproject.controller;
 
-
-
 import com.keanghor.java.miniproject.jwt.JwtService;
-import com.keanghor.java.miniproject.model.entity.AppUser;
 
 import com.keanghor.java.miniproject.model.request.AppUserRequest;
 import com.keanghor.java.miniproject.model.request.AuthRequest;
@@ -12,7 +9,7 @@ import com.keanghor.java.miniproject.model.response.AppUserResponse;
 import com.keanghor.java.miniproject.model.response.AuthResponse;
 import com.keanghor.java.miniproject.service.AppUserService;
 import lombok.RequiredArgsConstructor;
-import org.apache.ibatis.javassist.NotFoundException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -26,10 +23,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
 
+@Slf4j
 @RestController
-@RequestMapping("api/v1/auths")
+@RequestMapping("/api/v1/auths")
 @RequiredArgsConstructor
 public class AuthController {
     private final AppUserService appUserService;
@@ -38,6 +35,7 @@ public class AuthController {
 
     private void authenticate(String email, String password) throws Exception {
         try {
+            log.info(email,password+"sdsdsdsd");
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
         } catch (DisabledException e) {
             throw new Exception("USER_DISABLED", e);

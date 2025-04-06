@@ -28,8 +28,5 @@ public class SpringBootMiniProjectApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpringBootMiniProjectApplication.class, args);
     }
-    @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+
 }
