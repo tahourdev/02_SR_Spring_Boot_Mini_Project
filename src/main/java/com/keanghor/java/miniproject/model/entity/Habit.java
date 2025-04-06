@@ -19,5 +19,6 @@ public class Habit {
     private Frequency frequency;
     private Boolean isActive;
     private AppUserResponse appUserResponse;
+
     private LocalDateTime createdAt;
 }
