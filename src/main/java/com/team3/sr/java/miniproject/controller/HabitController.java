@@ -1,8 +1,7 @@
 package com.team3.sr.java.miniproject.controller;
 
 import com.team3.sr.java.miniproject.ApiResponse.ApiResponse;
-import com.team3.sr.java.miniproject.DTO.HabitDTO;
-import com.team3.sr.java.miniproject.DTO.HabitRequestDTO;
+import com.team3.sr.java.miniproject.model.entity.Habit;
 import com.team3.sr.java.miniproject.services.HabitService;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -23,12 +22,11 @@ public class HabitController {
     private final HabitService habitService;
 
     @GetMapping
-    public ResponseEntity<ApiResponse<List<HabitDTO>>> getHabits(
-
+    public ResponseEntity<ApiResponse<List<Habit>>> getHabits(
             @RequestParam(required = false, defaultValue = "1") @Positive(message = "Offset must be greater than 0!!!") @NotNull(message = "Offset is required!!!") Integer offset,
             @RequestParam(required = false, defaultValue = "10") @Positive(message = "Limit must be greater than 0!!!") @NotNull(message = "Limit is required!!!") Integer limit) {
-        List<HabitDTO> habitDTOs = habitService.getHabits( offset, limit);
-        ApiResponse<List<HabitDTO>> response = ApiResponse.<List<HabitDTO>>builder()
+        List<Habit> habitDTOs = habitService.getHabits( offset, limit);
+        ApiResponse<List<Habit>> response = ApiResponse.<List<Habit>>builder()
                 .success(true)
                 .message("Fetched all habits successfully!")
                 .status(HttpStatus.OK)

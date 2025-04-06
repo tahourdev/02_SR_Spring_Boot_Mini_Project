@@ -1,41 +1,24 @@
 package com.team3.sr.java.miniproject.services.serviceImp;
 
-import com.team3.sr.java.miniproject.DTO.HabitDTO;
-import com.team3.sr.java.miniproject.DTO.HabitRequestDTO;
-import com.team3.sr.java.miniproject.mapper.HabitMapperDTO;
-import com.team3.sr.java.miniproject.model.entity.AppUser;
 import com.team3.sr.java.miniproject.model.entity.Habit;
-import com.team3.sr.java.miniproject.repository.AppUserRepository;
 import com.team3.sr.java.miniproject.repository.HabitRepository;
 import com.team3.sr.java.miniproject.services.HabitService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class HabitServiceImpl implements HabitService {
 
     private final HabitRepository habitRepository;
-    private final AppUserRepository appUserRepository;
-    private final HabitMapperDTO habitMapperDTO;
+
 
     @Override
-    public List<HabitDTO> getHabits(Integer offset, Integer limit) {
+    public List<Habit> getHabits(Integer offset, Integer limit) {
         offset = (offset - 1) * limit;
         List<Habit> habits = habitRepository.getHabits(offset, limit);
-        return habits.stream()
-                .map(habitMapperDTO::toDTO)
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public HabitDTO createHabit(HabitRequestDTO habitRequestDTO, UUID appUserId) {
-        return null;
+        return habits;
     }
 
 //    @Override

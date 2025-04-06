@@ -20,6 +20,5 @@ public class Habit {
     private String frequency;
     private Boolean isActive;
     private UUID appUserId;
-    private AppUser appUser;
     private LocalDateTime createdAt;
 }
