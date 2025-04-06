@@ -1,4 +1,50 @@
 package com.keanghor.java.miniproject.repository;
 
+
+
+import com.keanghor.java.miniproject.config.UUIDTypeHandler;
+import com.keanghor.java.miniproject.model.entity.Profile;
+import com.keanghor.java.miniproject.model.request.ProfileRequest;
+import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.type.JdbcType;
+
+import java.util.Collection;
+import java.util.UUID;
+
+@Mapper
 public interface ProfileRepository {
+    @Results(
+            id = "profileMapper", value = {
+            @Result(property = "appUserId", column = "user_id", jdbcType = JdbcType.OTHER, javaType = UUID.class, typeHandler = UUIDTypeHandler.class),
+            @Result(property = "userName", column = "username"),
+            @Result(property = "profileImage", column = "profile_image"),
+            @Result(property = "isVerified", column = "is_verified"),
+            @Result(property = "createdAt", column = "created_at")
+    }
+    )
+    @Select("""
+               SELECT * FROM  app_users WHERE user_id = #{currentUserId}
+            """)
+    Profile getUserProfile(UUID currentUserId);
+
+    @ResultMap("profileMapper")
+    @Select("""
+             UPDATE  app_users
+             SET username = #{req.name}, profile_image = #{req.profileImage}
+             WHERE user_id = #{userId}
+             RETURNING *;
+            """)
+    Profile updateProfile(UUID userId, @Param("req") ProfileRequest request);
+
+    @Delete("""
+            DELETE FROM  app_users WHERE user_id = #{userId}
+            """)
+    void deleteProfile(UUID userId);
+
+    Collection<Object> findAll();
+
+    void delete(Profile profile);
+
+
+    Profile getProfileByUserId(UUID userId);
 }

@@ -1,24 +1,21 @@
-package com.keanghor.java.miniproject.ApiResponse;
+package com.keanghor.java.miniproject.model.response;
 
-
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class ApiResponse <T>{
+public class APIResponse<T> {
     private Boolean success;
-    private String messsage;
+    private String message;
     private HttpStatus status;
     private T payload;
-    private LocalDateTime timestamps;
+    private Instant instant;
 }

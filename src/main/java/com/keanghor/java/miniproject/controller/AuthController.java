@@ -1,13 +1,15 @@
 package com.keanghor.java.miniproject.controller;
 
 
-import com.keanghor.java.miniproject.ApiResponse.ApiResponse;
+
 import com.keanghor.java.miniproject.jwt.JwtService;
 import com.keanghor.java.miniproject.model.entity.AppUser;
-import com.keanghor.java.miniproject.model.entity.request.AppUserRequest;
-import com.keanghor.java.miniproject.model.entity.request.AuthRequest;
-import com.keanghor.java.miniproject.model.entity.response.AppUserResponse;
-import com.keanghor.java.miniproject.model.entity.response.AuthResponse;
+
+import com.keanghor.java.miniproject.model.request.AppUserRequest;
+import com.keanghor.java.miniproject.model.request.AuthRequest;
+import com.keanghor.java.miniproject.model.response.APIResponse;
+import com.keanghor.java.miniproject.model.response.AppUserResponse;
+import com.keanghor.java.miniproject.model.response.AuthResponse;
 import com.keanghor.java.miniproject.service.AppUserService;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.javassist.NotFoundException;
@@ -23,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 
 @RestController
@@ -44,29 +47,29 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<ApiResponse<?>> authenticate(@RequestBody AuthRequest request) throws Exception {
+    public ResponseEntity<APIResponse<?>> authenticate(@RequestBody AuthRequest request) throws Exception {
         authenticate(request.getEmail(), request.getPassword());
         final UserDetails userDetails = appUserService.loadUserByUsername(request.getEmail());
         final String token = jwtService.generateToken(userDetails);
         AuthResponse authResponse = new AuthResponse(token);
-        ApiResponse<AuthResponse> response = ApiResponse.<AuthResponse>builder()
+        APIResponse<AuthResponse> response = APIResponse.<AuthResponse>builder()
             .success(true)
-            .messsage("Login successfully! Authentication token generated.")
+            .message("Login successfully! Authentication token generated.")
             .status(HttpStatus.OK)
             .payload(authResponse)
-            .timestamps(LocalDateTime.now())
+            .instant(Instant.now())
             .build();
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
     @PostMapping("/register")
-    public ResponseEntity<ApiResponse<?>> register(@RequestBody AppUserRequest request){
+    public ResponseEntity<APIResponse<?>> register(@RequestBody AppUserRequest request){
         AppUserResponse appUserResponse = appUserService.register(request);
-        ApiResponse<AppUserResponse> response = ApiResponse.<AppUserResponse>builder()
+        APIResponse<AppUserResponse> response = APIResponse.<AppUserResponse>builder()
                 .success(true)
-                .messsage("User registered successfully! Please verify your email to complete the registration.")
+                .message("User registered successfully! Please verify your email to complete the registration.")
                 .status(HttpStatus.CREATED)
                 .payload(appUserResponse)
-                .timestamps(LocalDateTime.now())
+                .instant(Instant.now())
                 .build();
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }

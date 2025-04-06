@@ -3,7 +3,8 @@ package com.keanghor.java.miniproject.repository;
 
 
 import com.keanghor.java.miniproject.model.entity.AppUser;
-import com.keanghor.java.miniproject.model.entity.request.AppUserRequest;
+
+import com.keanghor.java.miniproject.model.request.AppUserRequest;
 import org.apache.ibatis.annotations.*;
 
 @Mapper

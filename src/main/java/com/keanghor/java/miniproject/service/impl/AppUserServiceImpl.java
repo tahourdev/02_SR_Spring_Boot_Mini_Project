@@ -1,8 +1,10 @@
 package com.keanghor.java.miniproject.service.impl;
 
 import com.keanghor.java.miniproject.model.entity.AppUser;
-import com.keanghor.java.miniproject.model.entity.request.AppUserRequest;
-import com.keanghor.java.miniproject.model.entity.response.AppUserResponse;
+
+
+import com.keanghor.java.miniproject.model.request.AppUserRequest;
+import com.keanghor.java.miniproject.model.response.AppUserResponse;
 import com.keanghor.java.miniproject.repository.AppUserRepository;
 import com.keanghor.java.miniproject.service.AppUserService;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package com.keanghor.java.miniproject.model.entity.response;
+package com.keanghor.java.miniproject.model.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,5 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProfileResponse {
+public class AuthResponse {
+    private String token;
 }
