@@ -27,12 +27,12 @@ public class ProfileController {
 
     @GetMapping
     @Operation(summary = "Get current user profile")
-    public ResponseEntity<APIResponse<ProfileResponse>> getProfile() {
+    public ResponseEntity<APIResponse<Profile>> getProfile() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         AppUser currentUser = (AppUser) authentication.getPrincipal();
         UUID currentUserId = currentUser.getAppUserId();
 
-        APIResponse<ProfileResponse> response = APIResponse.<ProfileResponse>builder()
+        APIResponse<Profile> response = APIResponse.<Profile>builder()
                 .success(true)
                 .message("User profile fetched successfully")
                 .status(HttpStatus.OK)

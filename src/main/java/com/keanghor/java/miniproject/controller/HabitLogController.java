@@ -2,8 +2,7 @@ package com.keanghor.java.miniproject.controller;
 
 import com.keanghor.java.miniproject.model.entity.HabitLog;
 import com.keanghor.java.miniproject.model.response.APIResponse;
-import com.team3.sr.java.miniproject.ApiResponse.ApiResponse;
-import com.team3.sr.java.miniproject.model.entity.HabitLog;
+
 import com.keanghor.java.miniproject.service.HabitLogService;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -40,7 +39,7 @@ public class HabitLogController {
     }
 
 //    @PostMapping
-//    public ResponseEntity<ApiResponse<HabitLog>> createHabitLog(@RequestBody HabitLogRequestDTO habitLogRequestDTO) {
+//    public ResponseEntity<APIResponse<HabitLog>> createHabitLog(@RequestBody HabitLogRequestDTO habitLogRequestDTO) {
 //        HabitLogDTO createdHabitLogDTO = habitLogService.createHabitLog(habitLogRequestDTO);
 //        ApiResponse<HabitLogDTO> response = ApiResponse.<HabitLogDTO>builder()
 //                .success(true)
