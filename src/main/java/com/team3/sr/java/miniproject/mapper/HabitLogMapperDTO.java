@@ -13,6 +13,10 @@ public interface HabitLogMapperDTO {
     @Mapping(source = "status", target = "status", resultType = HabitStatus.class)
     HabitLogDTO toDTO(HabitLog habitLog);
 
+    @Mapping(source = "habitLogId", target = "logId")
+    @Mapping(source = "status", target = "status", resultType = String.class)
+    HabitLog toEntity(HabitLogDTO habitLogDTO);
+
     default HabitStatus mapStatus(String status) {
         return status != null ? HabitStatus.valueOf(status) : null;
     }

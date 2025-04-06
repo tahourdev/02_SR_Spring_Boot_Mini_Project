@@ -58,6 +58,8 @@ CREATE TABLE IF NOT EXISTS habit_logs(
     habit_id UUID REFERENCES habits(habit_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+SELECT * FROM habit_logs hb INNER JOIN habits h
+ON hb.habit_id = h.habit_id WHERE h.habit_id = '6fa85f64-5717-4562-b3fc-2c963f66afa9';
 
 DROP TABLE IF EXISTS habit_logs;
 DROP TABLE IF EXISTS habits;

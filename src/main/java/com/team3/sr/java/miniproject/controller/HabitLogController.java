@@ -2,6 +2,7 @@ package com.team3.sr.java.miniproject.controller;
 
 import com.team3.sr.java.miniproject.ApiResponse.ApiResponse;
 import com.team3.sr.java.miniproject.DTO.HabitLogDTO;
+import com.team3.sr.java.miniproject.DTO.HabitLogRequestDTO;
 import com.team3.sr.java.miniproject.model.entity.HabitLog;
 import com.team3.sr.java.miniproject.services.HabitLogService;
 import jakarta.validation.constraints.NotNull;
@@ -11,7 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -26,9 +26,8 @@ public class HabitLogController {
     public ResponseEntity<ApiResponse<List<HabitLogDTO>>> getHabitLogsByHabitId(
             @PathVariable UUID habitId,
             @RequestParam(required = false, defaultValue = "1") @Positive(message = "Offset must be greater than 0!!!") @NotNull(message = "Offset is required!!!") Integer offset,
-            @RequestParam(required = false, defaultValue = "10") @Positive(message = "Limit must be greater than 0!!!") @NotNull(message = "Limit is required!!!") Integer limit
-    ) {
-        List<HabitLogDTO> habitLogDTOs = habitLogService.getHabitLogsById(offset, limit, habitId);
+            @RequestParam(required = false, defaultValue = "10") @Positive(message = "Limit must be greater than 0!!!") @NotNull(message = "Limit is required!!!") Integer limit) {
+        List<HabitLogDTO> habitLogDTOs = habitLogService.getHabitLogsByHabitId(habitId, offset, limit);
         ApiResponse<List<HabitLogDTO>> response = ApiResponse.<List<HabitLogDTO>>builder()
                 .success(true)
                 .message("Fetched all habit logs for the specified habit ID successfully!")
@@ -37,5 +36,18 @@ public class HabitLogController {
                 .timestamps(LocalDateTime.now())
                 .build();
         return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
+
+    @PostMapping
+    public ResponseEntity<ApiResponse<HabitLogDTO>> createHabitLog(@RequestBody HabitLogRequestDTO habitLogRequestDTO) {
+        HabitLogDTO createdHabitLogDTO = habitLogService.createHabitLog(habitLogRequestDTO);
+        ApiResponse<HabitLogDTO> response = ApiResponse.<HabitLogDTO>builder()
+                .success(true)
+                .message("Habit log created successfully!")
+                .status(HttpStatus.CREATED)
+                .payload(createdHabitLogDTO)
+                .timestamps(LocalDateTime.now())
+                .build();
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 }

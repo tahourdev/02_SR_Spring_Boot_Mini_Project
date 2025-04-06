@@ -9,8 +9,13 @@ import org.mapstruct.Mapping;
 @Mapper(config = BaseMapperConfig.class, uses = {AppUserMapperDTO.class})
 public interface HabitMapperDTO {
 
+//    @Mapping(source = "appUser", target = "appUserResponse")
     @Mapping(source = "frequency", target = "frequency", resultType = HabitFrequency.class)
     HabitDTO toDTO(Habit habit);
+
+//    @Mapping(source = "appUserResponse", target = "appUser")
+    @Mapping(source = "frequency", target = "frequency", resultType = String.class)
+    Habit toEntity(HabitDTO habitDTO);
 
     default HabitFrequency mapFrequency(String frequency) {
         return frequency != null ? HabitFrequency.valueOf(frequency) : null;

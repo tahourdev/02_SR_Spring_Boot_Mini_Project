@@ -2,6 +2,7 @@ package com.team3.sr.java.miniproject.repository;
 
 import com.team3.sr.java.miniproject.config.UuidTypeHandler;
 import com.team3.sr.java.miniproject.model.entity.AppUser;
+import com.team3.sr.java.miniproject.model.entity.Habit;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
 
@@ -21,16 +22,21 @@ public interface AppUserRepository {
             @Result(property = "createdAt", column = "created_at")
     })
     @Select("""
-            SELECT * FROM app_users WHERE user_id = #{userId}
+            SELECT * FROM app_users
             """)
-    AppUser findById(@Param("userId") UUID userId);
-
+    AppUser findUser();
 
     @ResultMap("appUserMapper")
+    @Select("""
+            SELECT * FROM app_users WHERE user_id = #{appUserId}
+            """)
+    Habit findById(@Param("appUserId") UUID appUserId);
+
+
+
     @Update("""
-            UPDATE app_users SET xp = #{xp}, level = #{level} WHERE user_id = #{userId, typeHandler=com.team3.sr.java.miniproject.config.UuidTypeHandler}
+            UPDATE app_users SET xp = #{xp}, level = #{level}
+            WHERE user_id = #{userId, typeHandler=com.team3.sr.java.miniproject.config.UuidTypeHandler}
             """)
     void update(AppUser appUser);
-
-    void insert(AppUser appUser);
 }

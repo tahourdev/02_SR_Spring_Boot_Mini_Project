@@ -1,12 +1,8 @@
 package com.team3.sr.java.miniproject.mapper;
 
 import org.mapstruct.MapperConfig;
-import org.mapstruct.ReportingPolicy;
+import org.mapstruct.MappingConstants;
 
-@MapperConfig(
-        componentModel = "spring",
-        unmappedTargetPolicy = ReportingPolicy.IGNORE,
-        unmappedSourcePolicy = ReportingPolicy.IGNORE
-)
+@MapperConfig(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface BaseMapperConfig {
 }
