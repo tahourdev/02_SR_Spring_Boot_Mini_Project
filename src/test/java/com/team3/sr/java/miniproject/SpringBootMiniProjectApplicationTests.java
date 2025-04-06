@@ -1,4 +1,4 @@
-package com.keanghor.java.miniproject;
+package com.team3.sr.java.miniproject;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

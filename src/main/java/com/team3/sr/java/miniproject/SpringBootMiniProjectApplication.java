@@ -1,4 +1,4 @@
-package com.keanghor.java.miniproject;
+package com.team3.sr.java.miniproject;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
