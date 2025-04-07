@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
 
+import java.sql.Timestamp;
 import java.time.Instant;
 
 @Data
@@ -23,4 +24,5 @@ public class ApiResponse<T> {
     private T payload;
     @JsonProperty("timestamps")
     private Instant instant;
+    private Timestamp timestamp;
 }
